@@ -7,8 +7,8 @@ html, body{
 
 body{
     display: grid;
-    grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 300px 3fr 300px 1fr;
+    grid-template-rows: 1fr 300px 300px 300px 1fr;
     grid-template-areas: ".     .       .       .       ."
                          ".     .       main    chunk2  ."
                          ".     chunk1  main    .       ."
@@ -20,7 +20,7 @@ body{
 
 main, footer, section{
     background-color: #ccc;
-    border: 1px solid #666;
+    box-shadow: #666666 1px 1px 1px;
 }
 
 main{

@@ -1,0 +1,44 @@
+html, body{
+    width:100%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr 300px 3fr 300px 1fr;
+    grid-template-rows: 1fr 300px 300px 300px 1fr;
+    grid-template-areas: ".     .       .       .       ."
+                         ".     .       main    chunk2  ."
+                         ".     chunk1  main    .       ."
+                         ".     .       footer  chunk3  ."
+                         ".     .       .       .       .";
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+main, footer, section{
+    background-color: #ccc;
+    box-shadow: #666666 1px 1px 1px;
+}
+
+main{
+    grid-area: main;
+}
+
+footer{
+    grid-area: footer;
+}
+
+#chunk1{
+    grid-area: chunk1;
+}
+
+#chunk2{
+    grid-area: chunk2;
+}
+
+#chunk3{
+    grid-area: chunk3;
+}
