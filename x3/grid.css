@@ -1,44 +1,231 @@
 html, body{
-    width:100%;
-    height:100%;
     margin: 0;
     padding: 0;
+    font-family: 'Oxygen', sans-serif;
 }
 
 body{
-    display: grid;
-    grid-template-columns: 1fr 300px 3fr 300px 1fr;
-    grid-template-rows: 1fr 300px 300px 300px 1fr;
-    grid-template-areas: ".     .       .       .       ."
-                         ".     .       main    chunk2  ."
-                         ".     chunk1  main    .       ."
-                         ".     .       footer  chunk3  ."
-                         ".     .       .       .       .";
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-main, footer, section{
+aside{
+    display: none;
+}
+
+nav, header, footer, aside, section{
     background-color: #ccc;
-    box-shadow: #666666 1px 1px 1px;
+    box-shadow: #666666 1px 2px 3px;
+    width: 100%;
+    min-height: 200px;
+
+}
+
+nav, footer, header{
+    background-image: url(Colorful-Polygons-Abstract-Background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+footer, nav{
+    display: flex;
+    flex-direction: row;
+    order: 4;
+}
+
+a{
+    color: #FFF;
+    padding: 10px;
+    font-size: 24px;
+    text-decoration: underline;
+    z-index: 999;
+    font-weight: 100;
+    text-shadow: #333 1px 1px 1px;
+}
+
+a:hover{
+    cursor: pointer;
+    font-style: italic;
+}
+
+header h1{
+    font-size: 48px;
+    text-align: center;
+    color: #FFF;
+    text-shadow: #333 1px 1px 1px;
+    align-self: center;
+    z-index: 999;
+}
+
+h1{
+    padding: 10px;
+}
+
+p{
+    padding: 10px;
+}
+
+/* flexbox for mobile */
+header{
+    order: 1;
+    display: flex;
+    justify-content: center;
+    position: relative
+}
+
+header::before{
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .4;
+}
+
+nav{
+    order: 2;
 }
 
 main{
-    grid-area: main;
+    order: 3;
 }
 
 footer{
-    grid-area: footer;
+    order: 4;
 }
 
-#chunk1{
-    grid-area: chunk1;
+/* CSS Grid for desktop */
+@media(min-width: 1024px){
+    body{
+        display: grid;
+        grid-template-columns: 100px 300px 20px 3fr 20px 300px 100px;
+        grid-template-rows: 100px 300px 20px 300px 20px 300px 20px auto 100px;
+        grid-template-areas:    ".     .       .       .       .       .       ."
+                                ".     nav     .       aside1  aside1  aside1  ."
+                                ".     nav     .       .       .       .       ."
+                                ".     head    head    head    head    head    ."
+                                ".     .       .       .       .       foot    ."
+                                ".     main    main    main    .       foot    ."
+                                ".     main    main    main    .       .       ."
+                                ".     main    main    main    .       .       .";
+    }
+
+    aside{
+        display: block;
+    }
+
+    nav{
+        grid-area: nav;
+    }
+
+    header{
+        grid-area: head;
+        z-index: 888;
+    }
+
+    header::before{
+        background-color: transparent;
+    }
+
+    main{
+        grid-area: main;
+    }
+
+    footer{
+        grid-area: foot;
+        z-index: 889;
+        justify-content: flex-end;
+    }
+
+    #aside1{
+        grid-area: aside1;
+        background-image: url(https://picsum.photos/1000/300?image=942);
+    }
+
+    #aside2{
+        grid-area: aside2;
+    }
+
+
+    footer, nav{
+        flex-direction: column;
+        order: 4;
+    }
+
+    nav a{
+        text-align: right;
+    }
+
+    footer a{
+        text-align: left;
+    }
 }
 
-#chunk2{
-    grid-area: chunk2;
+/* CSS Grid for large desktop */
+@media(min-width: 1940px){
+    body{
+        display: grid;
+        grid-template-columns: 100px 300px 20px 3fr 20px 300px 100px;
+        grid-template-rows: 100px 300px 20px 300px 20px 300px 20px auto 100px;
+        grid-template-areas:    ".     .       .       .       .       .       ."
+                                ".     nav     .       aside1  aside1  aside1  ."
+                                ".     nav     .       .       .       .       ."
+                                ".     head    head    head    head    head    ."
+                                ".     .       .       .       .       foot    ."
+                                ".     aside2  .       main    .       foot    ."
+                                ".     aside2  .       main    .       .       ."
+                                ".     aside2  .       main    .       .       .";
+    }
+
+    aside{
+        display: block;
+    }
+
+    nav{
+        grid-area: nav;
+    }
+
+    header{
+        grid-area: head;
+        z-index: 888;
+    }
+
+    header::before{
+        background-color: transparent;
+    }
+
+    main{
+        grid-area: main;
+    }
+
+    footer{
+        grid-area: foot;
+        z-index: 889;
+        justify-content: flex-end;
+    }
+
+    #aside1{
+        grid-area: aside1;
+        background-image: url(https://picsum.photos/1400/300?image=942);
+    }
+
+    #aside2{
+        grid-area: aside2;
+        background-image: url(https://picsum.photos/300/1400?image=893);
+    }
+
+
+    footer, nav{
+        flex-direction: column;
+        order: 4;
+    }
+
+    nav a{
+        text-align: right;
+    }
+
+    footer a{
+        text-align: left;
+    }
 }
 
-#chunk3{
-    grid-area: chunk3;
-}
